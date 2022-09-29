@@ -4,10 +4,10 @@ from time import sleep
 
 def fetch(url):
     headers = {"user-agent": "Fake user-agent"}
-    response = requests.get(url, headers=headers, timeout=3)
     sleep(1)
 
     try:
+        response = requests.get(url, headers=headers, timeout=3)
         response.raise_for_status()
     except (requests.ReadTimeout, requests.HTTPError):
         return None
