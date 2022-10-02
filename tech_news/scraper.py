@@ -20,9 +20,15 @@ def scrape_novidades(html_content):
     url_news_list = selector.css("h2.entry-title a::attr(href)").getall()
     return url_news_list
 
-# Requisito 3
+
 def scrape_next_page_link(html_content):
-    ...
+    selector = Selector(text=html_content)
+    # tirar duvida na mentoria!!
+    # url_next_page = selector.css("next page-numbers ::attr(href)").get()
+    url_next_page = selector.css(".next ::attr(href)").get()
+    if url_next_page is None:
+        return None
+    return url_next_page
 
 
 # Requisito 4
