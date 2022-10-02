@@ -17,12 +17,12 @@ def fetch(url):
 
 def scrape_novidades(html_content):
     selector = Selector(text=html_content)
-    return selector.css("h2.entry-title a::attr(href)").getall()
-
+    url_news_list = selector.css("h2.entry-title a::attr(href)").getall()
+    return url_news_list
 
 # Requisito 3
 def scrape_next_page_link(html_content):
-    """Seu código deve vir aqui"""
+    ...
 
 
 # Requisito 4
