@@ -76,12 +76,12 @@ def get_tech_news(amount):
     while len(url_news_list) < amount:
         # obtenho a pagina seguinte
         next_page = scrape_next_page_link(html_page)
-        # obtennho o HTML da proxima pagina
-        html_next_page = fetch(next_page)
+        # obtennho o HTML da proxima pagina e convertindo na minha nova pagina!
+        html_page = fetch(next_page)
         # obtenho as noticias da nova pagina, e adiciono na lista original
-        url_news_list.extend(scrape_novidades(html_next_page))
+        url_news_list.extend(scrape_novidades(html_page))
     # fora do while, utilizo a lista e percorro anexando as noticias
-    news = []
+    news = list()
     for url in url_news_list:
         if len(news) < amount:
             html = fetch(url)
