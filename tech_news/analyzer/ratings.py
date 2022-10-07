@@ -1,3 +1,4 @@
+from collections import Counter
 import tech_news
 
 database = tech_news.database
@@ -16,4 +17,14 @@ def top_5_news():
 
 # Requisito 11
 def top_5_categories():
-    """Seu código deve vir aqui"""
+    list = []
+    response = database.find_news()
+
+    for new in response:
+        list.append(new["category"])
+    ordered_list = sorted(list)
+    categories_count = Counter(ordered_list).most_common()
+    top_5 = []
+    for item in categories_count:
+        top_5.append(item[0])
+    return top_5
